@@ -1,0 +1,300 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    transition: 0.3s;
+}
+html {
+  scroll-behavior: smooth;
+}
+h1, h2, h3{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/******************************** navbar*/
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 15px;
+    background-color: rgba(3, 11, 13, 0.89);
+    position: fixed;
+    z-index: 1000;
+    width: 100%;
+    height: 70px;
+}
+.logo:hover{
+    transform: scale(1.15);
+}
+header a{
+    color: white;
+}
+span{
+    color: orange;
+}
+nav a{
+    margin: 15px;
+    color: rgb(255, 255, 255);
+}
+nav a:hover{
+    color: orange;
+}
+nav a.active {
+  background-color: rgba(255, 166, 0, 0.74);
+  color: rgb(6, 14, 16);
+  padding: 5px 10px;
+}
+
+/******************************** HAMBURGER MENU STYLES */
+/* Hide the actual checkbox */
+#menu-toggle {
+    display: none;
+}
+.menu-icon {
+    display: none; /* Hidden by default on desktop */
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001; 
+}
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff; 
+    margin: 5px 0;
+    transition: 0.4s;
+    border-radius: 3px;
+}
+
+/**************************** Hamberger for phone*/
+@media (max-width: 768px) {
+    /* Show the hamburger icon */
+    .menu-icon {
+        display: block;
+        margin-right: 5%; 
+    }
+    /* HIDE NAV LINKS BY DEFAULT on mobile */
+    nav {
+        display: flex; 
+        flex-direction: column;
+        width: 25%;
+        position: absolute;
+        top: 70px; /* Below the header */
+        right: 0;
+        background-color: rgba(6, 14, 16, 0.89);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+
+        /* CORE CHANGES FOR ANIMATION */
+        max-height: 0;    /* Hide ....*/
+        overflow: hidden; /* Hides content when max-height is 0 */
+        transition: max-height 0.4s ease-in-out; /* Add the transition effect */
+        }
+
+        /* SHOW when checked by setting a large max-height */
+        #menu-toggle:checked ~ #nav-links {
+        /* Set a height that is guaranteed to be taller than the menu */
+        max-height: 300px; 
+        }
+
+    /*SHOW NAV LINKS WHEN CHECKBOX IS CHECKED */
+    #menu-toggle:checked ~ #nav-links {
+        display: flex;
+    }
+    #menu-toggle:checked ~ .menu-icon .bar { /* THIS RULE to changes the bar color when the menu is open */
+        background-color: rgb(255, 166, 0); 
+    }
+    /* Style the links vertically */
+    nav a {
+        padding: 15px 25px;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        margin: 0;
+    }
+    nav a.active {
+        padding: 15px 25px; 
+    }
+}
+
+/******************************* HERO*/
+
+#hero {
+  position: relative;
+  height: 100vh;
+  background-image: url(./img/bg.png);
+  background-position: center;
+  background-size: cover;
+  padding: 50px 80px;
+  display: flex;
+  color: antiquewhite;
+  align-items: flex-end;   /* puts text near the bottom */
+  justify-content: flex-start; /* keeps it left */
+}
+.text {
+  max-width: 450px;
+  margin-bottom: 40px;
+  background-color: rgba(6, 14, 16, 0.301);
+  border-radius: 10px;
+  padding: 20px;
+  text-shadow: 1px 1px 1px black ;
+}
+.text:hover{
+    transform: scale(1.1);
+}
+.btn1{
+    background-color: rgb(6, 14, 16);
+    border: 2px solid orange;
+}
+.btn1:hover{
+    background-color: orange;
+    color: rgb(6, 14, 16);
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    #hero {
+        background-position: 32% center; 
+        align-items: center;    
+        justify-content: center; 
+        text-align: center;
+    }
+    .text {
+        /* Remove the large bottom margin needed for bottom-left alignment */
+        margin-bottom: 0;
+        /* Ensure the text is centered relative to the hero section's vertical center */
+        margin-top: 50px; 
+    }
+}
+
+/************************** about, projects*/
+
+#about, #projects{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(6, 14, 16);
+    color: whitesmoke;
+    min-height: 100vh;
+}
+#about h1, #projects h1, #contact h1{
+    color: orange;
+}
+#about p{
+    width: 90%;
+    max-width: 700px;
+    line-height: 1.8;
+    text-align: justify;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card{
+    margin: 20px;
+    padding: 5px;
+    max-width: 380px;
+    flex: 1 1 300px;
+    border-bottom: 3px solid orange;
+}
+.card img{
+    width: 100%;
+    max-width: 380px;
+    border: 2px solid white;
+}
+.card img:hover{
+    border: 2px solid orange;
+    transform: scale(1.1);
+}
+
+/*phone size*/
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    max-width: 90%;
+  }
+}
+
+/************************** contact*/
+
+#contact{
+    display: flex;
+    background-color: black;
+    width: 100%;
+    color: white;
+    flex-wrap: wrap;  /* allows stacking on small screens */
+    padding: 50px 20px;  /* some breathing space */
+    box-sizing: border-box;
+}
+.msg, .socials{
+    flex: 1 1 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 20px;
+}
+input, textarea {
+  width: 100%;  
+  max-width: 400px;
+  margin-bottom: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+button{
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 20px;
+}
+.btn2{
+    background-color: rgb(6, 14, 16);
+    border: 2px solid orange;
+}
+.btn2:hover{
+    background-color: orange;
+    color: rgb(6, 14, 16);
+    transform: scale(1.1);
+}
+.imgs img {
+  width: 60px;
+  margin: 10px;
+  transition: 0.3s;
+}
+
+.imgs img:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .imgs img {
+    width: 50px;  /* smaller logos on mobile */
+    margin: 8px;
+  }
+}
+
+
+
+footer{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    height: 40px;
+}
+
